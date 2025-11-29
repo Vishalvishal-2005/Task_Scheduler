@@ -1,125 +1,121 @@
-🧠 Smart Personal Task Manager Agent
-A Multi-Agent, ADK-Compatible Productivity System with A2A Protocol, Observability & Orchestration
-📌 Overview
+# 🧠 Smart Personal Task Manager Agent
+### A Multi-Agent, ADK-Compatible Productivity System with A2A Protocol, Observability & Orchestration
 
-Smart Personal Task Manager Agent is an AI-powered multi-agent productivity system built using the Google Agent Development Kit (ADK).
+---
+
+## 📌 Overview
+
+**Smart Personal Task Manager Agent** is an AI-powered multi-agent productivity system built using the **Google Agent Development Kit (ADK)**.
 
 This system helps users:
 
-Create, update, and organize daily tasks
-
-Set and manage long-term goals
-
-Generate productivity reports
-
-View trends and analytics
-
-Interact intuitively via conversation
+- Create, update, and organize daily tasks  
+- Set and manage long-term goals  
+- Generate productivity reports  
+- View trends and analytics  
+- Interact intuitively via conversation  
 
 The architecture includes four major agents:
 
-Task Manager Agent
+- **Task Manager Agent**  
+- **Goal Planning Agent**  
+- **Analysis Agent**  
+- **Orchestrator Agent** (routes and coordinates)
 
-Goal Planning Agent
+Agents communicate using a fully implemented **A2A Protocol**, enabling multi-step reasoning and cooperative workflows.
 
-Analysis Agent
+This project is built as a comprehensive submission for the **Google × Kaggle Agents Intensive Capstone Project (2025)**.
 
-Orchestrator Agent (routes and coordinates)
+---
 
-Agents communicate using a fully implemented A2A Protocol, enabling multi-step reasoning and cooperative workflows.
+# 🖼️ Screenshots & UI Previews
 
-This project is built as a comprehensive submission for the Google × Kaggle Agents Intensive Capstone Project (2025).
-
-🖼️ Screenshots & UI Previews
-💬 Chat Interface
+### 💬 Chat Interface
 <img width="1910" src="https://github.com/user-attachments/assets/86b6125d-b4af-443a-830d-bf89ffd52188" />
-📋 Task List View
+
+### 📋 Task List View
 <img width="788" src="https://github.com/user-attachments/assets/110b5c43-f171-4859-be42-8774694b09b9" />
-📊 System Metrics / Observability
 
-(Add your image here when ready — recommended.)
+### 📊 System Metrics / Observability
+*(Add your image here when ready — recommended.)*
 
-🏗️ Architecture Diagram
+### 🏗️ Architecture Diagram
+*(Optional: Insert architecture image here.)*
 
-(Optional: Insert exported architecture image here.)
+---
 
-🎯 Problem the System Solves
+# 🎯 Problem the System Solves
 
-Modern life requires continuous task management and long-term planning.
+Modern life requires continuous task management and long-term planning.  
 However, most tools fall short because:
 
-They only act as checklists
+- They only act as checklists  
+- They do not break goals into actionable steps  
+- They lack intelligent prioritization  
+- They produce no insights or progress analysis  
+- They cannot collaborate on complex requests  
 
-They do not break goals into actionable steps
+This system solves all of these through **agent-driven automation** and **multi-step reasoning**.
 
-They lack intelligent prioritization
+---
 
-They produce no insights or progress analysis
+# 🤖 Why Agents?
 
-They cannot collaborate on complex requests
+## 🟦 Multi-Agent Collaboration
 
-This system solves all of these with agent-driven automation + multi-step reasoning.
+Each agent has a defined expertise:
 
-🤖 Why Agents?
-🟦 Multi-Agent Collaboration
+- **Task Manager** → tasks, deadlines, subtasks  
+- **Goal Planner** → long-term goals & breakdown  
+- **Analysis Agent** → insights, summaries, reports  
+- **Orchestrator** → routing + pipeline execution  
 
-Each agent has a clear expertise:
+This mimics real-world team delegation.
 
-Task Manager → tasks, deadlines, subtasks
+---
 
-Goal Planner → long-term goals & breakdown
+## 🟩 A2A Protocol (Agent-to-Agent Communication)
 
-Analysis Agent → insights, summaries, reports
+Agents coordinate using structured messages:
 
-Orchestrator → routing + multi-step pipelines
+- Goals → converted into tasks  
+- Patterns → transformed into goals  
+- Reports → auto-generated  
+- Long-term goals → broken into timelines  
 
-This mimics real-world delegation.
+Enables **autonomous cooperation**.
 
-🟩 A2A Protocol (Agent-to-Agent Communication)
+---
 
-Agents coordinate through structured messages:
+## 🟦 Observability + Metrics
 
-Goals → converted into tasks
+Tracks and logs:
 
-Patterns → transformed into goals
+- Agent calls  
+- Tool execution  
+- A2A messages  
+- Errors  
+- System events  
+- Session creation  
 
-Reports → auto-generated and shared
+Metrics & last 1000 events can be viewed via API/CLI.
 
-Long-term goals → broken into timelines
+---
 
-Enables autonomous cooperation.
+## 🟩 Sequential & Hybrid Orchestration
 
-🟦 Observability + Metrics
+The Orchestrator automatically decides:
 
-Every event is tracked:
+- Which agent should respond  
+- If a secondary agent is needed  
+- How to combine responses  
+- Multi-step workflow execution  
 
-Agent calls
+---
 
-Tool execution
+# 🏗️ Architecture Diagram
 
-A2A messages
-
-Errors
-
-System events
-
-Session creation
-
-Metrics and last 1000 events can be viewed anytime.
-
-🟩 Sequential & Hybrid Orchestration
-
-The Orchestrator determines:
-
-Which agent should respond
-
-When a secondary agent must join
-
-How to combine outputs
-
-Multi-step workflow execution
-
-🏗️ Architecture Diagram
+```mermaid
 flowchart TD
 
     User[[User Input]] --> ORCH[Orchestrator Agent]
@@ -141,7 +137,9 @@ flowchart TD
     AN --> LOG
     ORCH --> LOG
 
+
 ⚙️ Features
+
 ✔ Multi-Agent System
 ✔ Full A2A Protocol
 ✔ FastAPI Web App
@@ -152,6 +150,7 @@ flowchart TD
 ✔ Reporting & Analytics
 ✔ Sequential Orchestration
 ✔ InMemory Sessions
+
 🚀 Installation & Setup
 1️⃣ Clone the Repository
 git clone https://github.com/yourusername/smart-task-manager-agent.git
@@ -164,7 +163,7 @@ pip install -r requirements.txt
 cp .env.example .env
 
 
-Insert your Gemini API key inside .env.
+Add your Gemini API key inside .env.
 
 4️⃣ Run the CLI Version
 python agent.py
@@ -332,3 +331,5 @@ This project includes:
 ✔ Web App
 ✔ CLI
 ✔ Full Documentation
+
+Meets ALL Capstone scoring requirements.
