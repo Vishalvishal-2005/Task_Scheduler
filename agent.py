@@ -54,6 +54,7 @@ class ObservabilityTracker:
         self.events: List[ObservabilityEvent] = []
     
     def log_event(self, event_type: EventType, agent_name: str, details: Dict[str, Any], duration_ms: float = 0.0):
+        """Logs an event and maintains a maximum of 1000 events in memory."""
         event = ObservabilityEvent(
             event_id=str(uuid.uuid4()),
             event_type=event_type,
@@ -102,9 +103,11 @@ class A2AProtocol:
         self._is_running = False
     
     def register_agent(self, agent_name: str, handler: Callable):
+        """Registers an agent with its corresponding handler."""
         self.agent_handlers[agent_name] = handler
     
     async def send_message(self, message: A2AMessage):
+        """Sends a message and logs the event."""
         await self.message_queue.put(message)
         tracker.log_event(
             EventType.A2A_COMMUNICATION,
@@ -118,6 +121,7 @@ class A2AProtocol:
         )
     
     async def start_message_processor(self):
+        """Starts the message processing loop."""
         self._is_running = True
         while self._is_running:
             try:
@@ -186,7 +190,7 @@ def _load_db() -> Dict[str, Any]:
         return {"tasks": [], "goals": []}
 
 def _save_db(data: Dict[str, Any]) -> None:
-    """Persist tasks + goals to local JSON file."""
+    """Persist tasks and goals to a local JSON file."""
     try:
         with open(DB_PATH, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
@@ -208,6 +212,21 @@ def _now_iso() -> str:
 def add_task(title: str, due_date: Optional[str] = None,
              priority: str = "medium", context: Optional[str] = None,
              reminder_time: Optional[str] = None) -> Dict[str, Any]:
+    """Add a new task to the task manager.
+    
+    This function creates a new task with the specified title, due date,  priority,
+    context, and reminder time. It first checks for duplicate  tasks to prevent
+    adding the same task multiple times. If a duplicate  is found, it returns a
+    status indicating the task already exists.  Otherwise, it generates a new task
+    ID, adds the task to the database,  and logs the event for observability.
+    
+    Args:
+        title (str): The title of the task.
+        due_date (Optional[str]): The due date of the task.
+        priority (str): The priority level of the task.
+        context (Optional[str]): The context in which the task is set.
+        reminder_time (Optional[str]): The time for a reminder about the task.
+    """
     start_time = datetime.utcnow()
     try:
         db = _load_db()
@@ -254,6 +273,14 @@ def add_task(title: str, due_date: Optional[str] = None,
         return {"status": "error", "message": str(e)}
 
 def delete_previous_month_tasks() -> Dict[str, Any]:
+    """Delete tasks that are due in the previous month.
+    
+    This function retrieves tasks from the database, checks their due dates,  and
+    removes those that are due in the previous month. It handles date  parsing and
+    logs the execution duration and any errors encountered.  Finally, it updates
+    the database with the remaining tasks and returns  a summary of the operation,
+    including the count of deleted tasks.
+    """
     start_time = datetime.utcnow()
     try:
         db = _load_db()
@@ -300,6 +327,14 @@ def delete_previous_month_tasks() -> Dict[str, Any]:
         return {"status": "error", "message": str(e)}
 
 def list_high_priority_top_n(n: int = 5) -> Dict[str, Any]:
+    """Retrieve the top N high-priority tasks.
+    
+    Args:
+        n (int): The number of high-priority tasks to return. Defaults to 5.
+    
+    Returns:
+        Dict[str, Any]: A dictionary containing the status and the list of tasks.
+    """
     start_time = datetime.utcnow()
     try:
         db = _load_db()
@@ -307,6 +342,7 @@ def list_high_priority_top_n(n: int = 5) -> Dict[str, Any]:
         high = [t for t in tasks if str(t.get("priority", "")).lower() == "high"]
 
         def _parse_due(d: Optional[str]):
+            """Parse a due date from an ISO format string or return datetime.max."""
             if not d:
                 return datetime.max
             try:
@@ -339,9 +375,18 @@ def list_tasks(status: str = "all") -> Dict[str, Any]:
             tasks = [t for t in tasks if t.get("status") == status]
 
         def _priority_rank(p: str) -> int:
+            """Return the priority rank of a given string.
+            
+            Args:
+                p (str): The priority level as a string.
+            
+            Returns:
+                int: The corresponding rank of the priority level.
+            """
             return {"high": 0, "medium": 1, "low": 2}.get(p, 3)
 
         def _parse_due(d: Optional[str]):
+            """Parse a due date string into a datetime object or return datetime.max."""
             if not d:
                 return datetime.max
             try:
@@ -378,6 +423,22 @@ def update_task(
     context: Optional[str] = None,
     reminder_time: Optional[str] = None,
 ) -> Dict[str, Any]:
+    """Update a task in the task manager.
+    
+    This function updates the details of a task identified by the given task_id.
+    It modifies the task's title, due_date, priority, context, and reminder_time
+    if the corresponding parameters are provided. The function also logs the
+    execution time and any errors encountered during the update process, ensuring
+    that the task manager's state remains consistent.
+    
+    Args:
+        task_id (int): The ID of the task to be updated.
+        title (Optional[str]): The new title for the task.
+        due_date (Optional[str]): The new due date for the task.
+        priority (Optional[str]): The new priority for the task.
+        context (Optional[str]): The new context for the task.
+        reminder_time (Optional[str]): The new reminder time for the task.
+    """
     start_time = datetime.utcnow()
     try:
         db = _load_db()
@@ -448,6 +509,16 @@ def update_task_status(task_id: int, status: str) -> Dict[str, Any]:
         return {"status": "error", "message": str(e)}
 
 def delete_task(task_id: int) -> Dict[str, Any]:
+    """def delete_task(task_id: int) -> Dict[str, Any]:
+    Delete a task by its ID.  This function attempts to delete a task identified by
+    the given  task_id from the database. It first loads the current tasks,
+    filters out the task with the specified ID, and checks if the  task was found.
+    If the task is not found, it returns an error  message. If the task is
+    successfully deleted, it saves the  updated task list back to the database and
+    logs the event with  the duration of the operation.
+    
+    Args:
+        task_id (int): The ID of the task to be deleted."""
     start_time = datetime.utcnow()
     try:
         db = _load_db()
@@ -474,6 +545,16 @@ def delete_task(task_id: int) -> Dict[str, Any]:
         return {"status": "error", "message": str(e)}
 
 def add_subtasks(task_id: int, subtasks: List[str]) -> Dict[str, Any]:
+    """def add_subtasks(task_id: int, subtasks: List[str]) -> Dict[str, Any]:
+    Add subtasks to a specified task.  This function retrieves the task with the
+    given task_id from the database,  appends the provided subtasks to its existing
+    subtasks, and updates the task's  updated_at timestamp. It also logs the event
+    duration and handles any exceptions  that may occur during the process,
+    ensuring that appropriate error messages are returned.
+    
+    Args:
+        task_id (int): The ID of the task to which subtasks will be added.
+        subtasks (List[str]): A list of subtasks to be added to the task."""
     start_time = datetime.utcnow()
     try:
         db = _load_db()
@@ -544,6 +625,7 @@ def mark_subtask_done(task_id: int, subtask_index: int) -> Dict[str, Any]:
         return {"status": "error", "message": str(e)}
 
 def save_long_term_goal(goal: str, horizon_months: int = 6, category: Optional[str] = None) -> Dict[str, Any]:
+    """Saves a long-term goal to the database."""
     start_time = datetime.utcnow()
     try:
         db = _load_db()
@@ -573,6 +655,7 @@ def save_long_term_goal(goal: str, horizon_months: int = 6, category: Optional[s
         return {"status": "error", "message": str(e)}
 
 def list_long_term_goals() -> Dict[str, Any]:
+    """Retrieve long-term goals from the database."""
     start_time = datetime.utcnow()
     try:
         db = _load_db()
@@ -592,6 +675,7 @@ def list_long_term_goals() -> Dict[str, Any]:
         return {"status": "error", "message": str(e)}
 
 def get_current_time(timezone: str = "UTC") -> Dict[str, Any]:
+    """Retrieve the current time in the specified timezone."""
     start_time = datetime.utcnow()
     try:
         now = _now_iso()
@@ -709,9 +793,7 @@ class SequentialAgentOrchestrator:
         }
     
     async def execute_workflow(self, user_input: str, user_id: str = "default_user") -> str:
-        """
-        Execute a sequential workflow across multiple agents based on input type.
-        """
+        """Execute a sequential workflow across multiple agents based on input type."""
         start_time = datetime.utcnow()
         
         try:
@@ -753,7 +835,17 @@ class SequentialAgentOrchestrator:
             return f"I encountered an error while processing your request: {str(e)}"
     
     def _route_to_agent(self, user_input: str) -> LlmAgent:
-        """Route user input to the most appropriate agent."""
+        """Route user input to the most appropriate agent.
+        
+        This function analyzes the provided user input and determines  the best agent
+        to handle the request based on specific keywords.  It checks for keywords
+        related to goal planning and analysis,  routing the input to the corresponding
+        agent. If no relevant  keywords are found, it defaults to the task manager
+        agent.
+        
+        Args:
+            user_input (str): The input string from the user to be analyzed.
+        """
         input_lower = user_input.lower()
         
         if any(keyword in input_lower for keyword in ["goal", "long-term", "strategy", "plan", "vision"]):
@@ -819,7 +911,7 @@ class SequentialAgentOrchestrator:
 # -------------------------------------------------------------------
 
 async def handle_task_manager_message(message: A2AMessage):
-    """Handle A2A messages for task manager agent."""
+    """Handle A2A messages for the task manager agent."""
     if message.message_type == "decompose_goal":
         # Goal agent asking to break down a goal into tasks
         goal = message.content.get("goal")
@@ -847,7 +939,7 @@ async def handle_task_manager_message(message: A2AMessage):
         await a2a_protocol.send_message(response_msg)
 
 async def handle_goal_planning_message(message: A2AMessage):
-    """Handle A2A messages for goal planning agent."""
+    """Handle A2A messages for goal planning based on task patterns."""
     if message.message_type == "suggest_goals_from_tasks":
         # Analysis agent suggesting goals based on task patterns
         task_patterns = message.content.get("patterns", [])
@@ -870,7 +962,16 @@ async def handle_goal_planning_message(message: A2AMessage):
         await a2a_protocol.send_message(response_msg)
 
 async def handle_analysis_message(message: A2AMessage):
-    """Handle A2A messages for analysis agent."""
+    """async def handle_analysis_message(message: A2AMessage):
+    Handle A2A messages for analysis agent.  This function processes messages of
+    type "generate_productivity_report"  from the task manager. It retrieves the
+    current tasks and long-term goals,  calculates the number of completed and
+    pending tasks, and generates a  productivity report. The report includes the
+    total number of tasks,  completion rate, and the number of active goals, which
+    is then sent back  to the requesting agent.
+    
+    Args:
+        message (A2AMessage): The incoming message containing the request type."""
     if message.message_type == "generate_productivity_report":
         # Task manager requesting a productivity report
         tasks_result = list_tasks()
@@ -941,6 +1042,7 @@ _web_runner = None
 _web_session_id = None
 
 def _build_content(message: str):
+    """Builds content from a user message."""
     return types.Content(
         role="user",
         parts=[types.Part(text=message)]
@@ -968,7 +1070,7 @@ async def _get_web_runner():
     return _web_runner, _web_session_id
 
 async def chat_once(message: str, user_id: str = "web_user") -> str:
-    """Enhanced chat that uses the multi-agent orchestrator."""
+    """Handles a single chat interaction using the multi-agent orchestrator."""
     try:
         # Use the orchestrator for sequential multi-agent execution
         response = await orchestrator.execute_workflow(message, user_id)
@@ -1152,7 +1254,7 @@ def get_system_metrics() -> Dict[str, Any]:
 # -------------------------------------------------------------------
 
 async def cli_chat_once(message: str, user_id: str = "cli_user") -> str:
-    """CLI version that uses the multi-agent orchestrator."""
+    """Handles a single chat interaction via CLI."""
     try:
         return await orchestrator.execute_workflow(message, user_id)
     except Exception as e:
@@ -1169,6 +1271,15 @@ if __name__ == "__main__":
     
     async def main():
         # Start A2A message processor
+        """Starts the main interactive chat loop for the CLI.
+        
+        This function initializes an A2A message processor and enters an infinite loop
+        to handle user input. It processes user messages, checks for specific system
+        commands like "metrics", and interacts with the `cli_chat_once` function to
+        generate replies. The loop continues until the user decides to exit by typing
+        "q", "quit", or "exit". Finally, it ensures proper cleanup by stopping the  A2A
+        protocol and canceling the associated task.
+        """
         a2a_task = asyncio.create_task(start_a2a_processor())
         
         try:
