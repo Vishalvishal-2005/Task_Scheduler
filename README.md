@@ -31,16 +31,17 @@ This project is built as a comprehensive submission for the **Google × Kaggle A
 # 🖼️ Screenshots & UI Previews
 
 ### 💬 Chat Interface
-<img width="1910" src="https://github.com/user-attachments/assets/86b6125d-b4af-443a-830d-bf89ffd52188" />
+<img width="1895" height="1079" alt="image" src="https://github.com/user-attachments/assets/2b8a0366-3cf9-47f4-92ff-9ad7afff410b" />
 
 ### 📋 Task List View
-<img width="788" src="https://github.com/user-attachments/assets/110b5c43-f171-4859-be42-8774694b09b9" />
+<img width="627" height="1075" alt="image" src="https://github.com/user-attachments/assets/208b619b-d6bd-4e60-99d9-2b4080c40e28" />
 
 ### 📊 System Metrics / Observability
-*(Add your image here when ready — recommended.)*
+
+<img width="615" height="369" alt="image" src="https://github.com/user-attachments/assets/e8673851-7f04-4d0a-8eb3-a8051b046a17" />
 
 ### 🏗️ Architecture Diagram
-*(Optional: Insert architecture image here.)*
+<img width="615" height="369" alt="image" src="https://github.com/user-attachments/assets/af97ecde-f602-4c1a-818b-aca22c1eb17f" />
 
 ---
 
