@@ -34,11 +34,11 @@ This project is built as a comprehensive submission for the **Google × Kaggle A
 <img width="1895" height="1079" alt="image" src="https://github.com/user-attachments/assets/2b8a0366-3cf9-47f4-92ff-9ad7afff410b" />
 
 ### 📋 Task List View
-<img width="627" height="1075" alt="image" src="https://github.com/user-attachments/assets/208b619b-d6bd-4e60-99d9-2b4080c40e28" />
+<img width="599" height="678" alt="image" src="https://github.com/user-attachments/assets/bf031b32-2562-4409-9e7f-0fd93ba7069a" />
 
 ### 📊 System Metrics / Observability
 
-<img width="615" height="369" alt="image" src="https://github.com/user-attachments/assets/e8673851-7f04-4d0a-8eb3-a8051b046a17" />
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/8f5a1bee-d196-4896-bc4c-6bd79d532669" />
 
 ### 🏗️ Architecture Diagram
 <img width="615" height="369" alt="image" src="https://github.com/user-attachments/assets/af97ecde-f602-4c1a-818b-aca22c1eb17f" />
