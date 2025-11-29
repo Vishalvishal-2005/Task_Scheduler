@@ -3,91 +3,121 @@ A Multi-Agent, ADK-Compatible Productivity System with A2A Protocol, Observabili
 📌 Overview
 
 Smart Personal Task Manager Agent is an AI-powered multi-agent productivity system built using the Google Agent Development Kit (ADK).
-It helps users organize tasks, set long-term goals, generate productivity reports, and maintain a healthy workflow — all through a conversational interface.
 
-The system uses a multi-agent architecture consisting of specialized agents (Task Manager, Goal Planner, and Analysis Agent) coordinated by an intelligent Orchestrator Agent.
-Agents collaborate via a full Agent-to-Agent (A2A) Protocol, enabling advanced workflows and modular reasoning.
+This system helps users:
 
-Designed as a complete submission for the Google × Kaggle Agents Intensive Capstone Project (2025).
+Create, update, and organize daily tasks
 
-<img width="1910" height="941" alt="image" src="https://github.com/user-attachments/assets/86b6125d-b4af-443a-830d-bf89ffd52188" />
+Set and manage long-term goals
 
+Generate productivity reports
 
-Chat Interface
-<img width="788" height="752" alt="image" src="https://github.com/user-attachments/assets/110b5c43-f171-4859-be42-8774694b09b9" />
+View trends and analytics
 
-Task List View
+Interact intuitively via conversation
 
-System Metrics / Observability
+The architecture includes four major agents:
 
-Architecture Diagram
+Task Manager Agent
+
+Goal Planning Agent
+
+Analysis Agent
+
+Orchestrator Agent (routes and coordinates)
+
+Agents communicate using a fully implemented A2A Protocol, enabling multi-step reasoning and cooperative workflows.
+
+This project is built as a comprehensive submission for the Google × Kaggle Agents Intensive Capstone Project (2025).
+
+🖼️ Screenshots & UI Previews
+💬 Chat Interface
+<img width="1910" src="https://github.com/user-attachments/assets/86b6125d-b4af-443a-830d-bf89ffd52188" />
+📋 Task List View
+<img width="788" src="https://github.com/user-attachments/assets/110b5c43-f171-4859-be42-8774694b09b9" />
+📊 System Metrics / Observability
+
+(Add your image here when ready — recommended.)
+
+🏗️ Architecture Diagram
+
+(Optional: Insert exported architecture image here.)
 
 🎯 Problem the System Solves
 
-Most people struggle with:
+Modern life requires continuous task management and long-term planning.
+However, most tools fall short because:
 
-Prioritizing tasks
+They only act as checklists
 
-Breaking big goals into actionable steps
+They do not break goals into actionable steps
 
-Tracking long-term aspirations
+They lack intelligent prioritization
 
-Maintaining consistency
+They produce no insights or progress analysis
 
-Understanding productivity trends
+They cannot collaborate on complex requests
 
-Existing tools lack reasoning, automation, and multi-step workflows.
-
-This system solves all of these with intelligent agent-driven automation.
+This system solves all of these with agent-driven automation + multi-step reasoning.
 
 🤖 Why Agents?
 🟦 Multi-Agent Collaboration
 
-Each agent specializes in a domain:
+Each agent has a clear expertise:
 
-Task Manager → tasks, subtasks, priorities
+Task Manager → tasks, deadlines, subtasks
 
-Goal Planner → long-term vision & strategy
+Goal Planner → long-term goals & breakdown
 
-Analysis Agent → reports, insights, summaries
+Analysis Agent → insights, summaries, reports
 
-Orchestrator → routes messages & coordinates workflows
+Orchestrator → routing + multi-step pipelines
 
-🟩 A2A Protocol Communication
+This mimics real-world delegation.
 
-Agents communicate using structured messages:
+🟩 A2A Protocol (Agent-to-Agent Communication)
 
-Convert goals → tasks
+Agents coordinate through structured messages:
 
-Detect productivity patterns → create goals
+Goals → converted into tasks
 
-Generate reports → share insights
+Patterns → transformed into goals
 
-🟦 Observability
+Reports → auto-generated and shared
 
-Tracks:
+Long-term goals → broken into timelines
+
+Enables autonomous cooperation.
+
+🟦 Observability + Metrics
+
+Every event is tracked:
 
 Agent calls
 
-Tool executions
-
-Errors
+Tool execution
 
 A2A messages
 
-Sessions
+Errors
 
-Metrics endpoint available.
+System events
+
+Session creation
+
+Metrics and last 1000 events can be viewed anytime.
 
 🟩 Sequential & Hybrid Orchestration
 
-The orchestrator detects:
+The Orchestrator determines:
 
-Primary agent
+Which agent should respond
 
-Secondary agent
+When a secondary agent must join
 
-Multi-step workflows
+How to combine outputs
+
+Multi-step workflow execution
 
 🏗️ Architecture Diagram
 flowchart TD
@@ -113,35 +143,37 @@ flowchart TD
 
 ⚙️ Features
 ✔ Multi-Agent System
-✔ A2A Protocol (Custom Message Types)
-✔ Tools (10+ ADK-compatible tools)
-✔ Observability + Logging
-✔ Sequential Orchestration
-✔ FastAPI-based Web UI
+✔ Full A2A Protocol
+✔ FastAPI Web App
 ✔ CLI Interface
+✔ Observability (logs + metrics)
+✔ Task Manager Tools (10+)
+✔ Goal Management
+✔ Reporting & Analytics
+✔ Sequential Orchestration
 ✔ InMemory Sessions
-🚀 Setup Instructions
-1️⃣ Clone Repo
+🚀 Installation & Setup
+1️⃣ Clone the Repository
 git clone https://github.com/yourusername/smart-task-manager-agent.git
 cd smart-task-manager-agent
 
 2️⃣ Install Dependencies
 pip install -r requirements.txt
 
-3️⃣ Create .env File
+3️⃣ Create the .env File
 cp .env.example .env
 
 
-Add your Gemini API keys.
+Insert your Gemini API key inside .env.
 
-4️⃣ Run CLI Version
+4️⃣ Run the CLI Version
 python agent.py
 
-5️⃣ Run Web Version
+5️⃣ Run the Web Version
 uvicorn web_app:app --reload
 
 
-Visit:
+Visit the UI at:
 👉 http://127.0.0.1:8000
 
 💬 Command List
@@ -157,7 +189,7 @@ show top 3 high priority
 show top 5
 list high priority tasks
 
-🔹 Task Status
+🔹 Task Status Updates
 update task 1 status done
 update task 2 status in_progress
 
@@ -183,42 +215,42 @@ show progress report
 generate weekly summary
 get task statistics
 
-🎪 Demo Script (Use in Video or Presentation)
+🎪 Demo Script (Perfect for Video Submission)
 Phase 1: Basic Task Management
-1. add Buy groceries due tomorrow priority high
-2. add Complete project proposal due Friday priority high  
-3. add Schedule team meeting priority medium
-4. add Read book priority low
-5. list tasks
+add Buy groceries due tomorrow priority high
+add Complete project proposal due Friday priority high
+add Schedule team meeting priority medium
+add Read book priority low
+list tasks
 
-Phase 2: Priorities & Updates
-6. show top 3 high priority
-7. update task 1 status done
-8. update task 2 status in_progress
-9. list tasks
+Phase 2: Priority & Status
+show top 3 high priority
+update task 1 status done
+update task 2 status in_progress
+list tasks
 
 Phase 3: Goal Setting
-10. set a goal to learn Python in 3 months
-11. I want to improve fitness in 2 months
-12. list goals
+set a goal to learn Python in 3 months
+I want to improve fitness in 2 months
+list goals
 
-Phase 4: Subtask Management
-13. break down 'Complete project proposal' into subtasks
-14. add subtasks to task 2: research, outline, write, review, submit
-15. mark subtask 0 done for task 2
+Phase 4: Subtasks
+break down 'Complete project proposal' into subtasks
+add subtasks to task 2: research, outline, write, review, submit
+mark subtask 0 done for task 2
 
 Phase 5: Reporting
-16. generate productivity report
-17. show progress report
-18. clean old tasks
+generate productivity report
+show progress report
+clean old tasks
 
 Phase 6: UI Quick Actions
 
-Click “🚨 High Priority”
+🚨 High Priority
 
-Click “📊 Report”
+📊 Report
 
-Click “🧹 Clean Old”
+🧹 Clean Old
 
 💡 Extra Demo Scenarios
 Scenario A — Busy Professional
@@ -243,8 +275,8 @@ add Assign team tasks priority medium
 set a goal to deliver project on time
 generate weekly summary
 
-🛠 Technical Commands
-System & Observability
+🛠 System & Technical Commands
+System / Observability
 show system status
 get metrics
 view agent health
@@ -267,7 +299,7 @@ schedule_agent/
 
 🧩 ADK Compatibility Notes
 
-Built using:
+This project uses:
 
 LlmAgent
 
@@ -277,29 +309,26 @@ GenerateContentConfig
 
 Gemini 2.0 Flash
 
-ADK-compatible tools, sessions, orchestration, A2A messaging
+ADK-style tools and orchestration
 
-Fully compatible with:
+Full A2A Protocol
+
+Compatible with:
+
 ✔ Vertex Agent Engine
-✔ Cloud Run deployment
-✔ Future tool extensions
+✔ Cloud Run
+✔ MCP + future extensions
 
 🏆 Competition Checklist
 
 This project includes:
 
-✔ Multi-agent architecture
+✔ Multi-agent system
 ✔ Sequential + hybrid orchestration
-✔ Tools (custom + system-level)
+✔ Tools (10+)
 ✔ Sessions & memory
+✔ A2A Protocol
 ✔ Observability
-✔ A2A protocol
-✔ Web UI
+✔ Web App
 ✔ CLI
-✔ Strong documentation
-
-Compliant with ALL Capstone scoring requirements.
-
-📜 License
-
-MIT License.
+✔ Full Documentation
