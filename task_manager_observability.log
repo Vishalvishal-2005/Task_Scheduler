@@ -69,3 +69,6 @@
 2025-11-29 16:10:59,401 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 3}
 2025-11-29 16:11:03,230 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 3}
 2025-11-29 16:11:10,132 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 3}
+2025-11-29 16:16:01,019 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 3}
+2025-11-29 16:16:11,839 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'add_task', 'task_id': 5, 'title': 'Buy groceries', 'priority': 'medium'}
+2025-11-29 16:16:11,888 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
