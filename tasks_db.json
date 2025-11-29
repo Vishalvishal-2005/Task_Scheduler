@@ -1,0 +1,53 @@
+{
+  "tasks": [
+    {
+      "id": 2,
+      "title": "meeting",
+      "due_date": "tomorrow",
+      "priority": "medium",
+      "context": "",
+      "status": "pending",
+      "created_at": "2025-11-29T07:20:03.836039",
+      "updated_at": null,
+      "reminder_time": null,
+      "subtasks": []
+    },
+    {
+      "id": 3,
+      "title": "5pm i have meeting",
+      "due_date": "tomorrow",
+      "priority": "medium",
+      "context": "",
+      "status": "pending",
+      "created_at": "2025-11-29T07:52:47.038854",
+      "updated_at": null,
+      "reminder_time": null,
+      "subtasks": []
+    },
+    {
+      "id": 4,
+      "title": "Complete project documentation",
+      "due_date": "Friday",
+      "priority": "high",
+      "context": "",
+      "status": "pending",
+      "created_at": "2025-11-29T09:02:55.787005",
+      "updated_at": null,
+      "reminder_time": null,
+      "subtasks": []
+    },
+    {
+      "id": 5,
+      "title": "Buy groceries",
+      "due_date": null,
+      "priority": "medium",
+      "context": "",
+      "status": "pending",
+      "created_at": "2025-11-29T10:46:11.839007",
+      "updated_at": null,
+      "reminder_time": null,
+      "subtasks": []
+    }
+  ],
+  "goals": []
+}

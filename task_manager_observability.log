@@ -1,0 +1,71 @@
+2025-11-29 14:13:21,559 - SmartTaskManager - INFO - agent_call - Orchestrator - {'action': 'workflow_start', 'input': 'hi', 'primary_agent': 'task_manager_agent'}
+2025-11-29 14:13:21,559 - SmartTaskManager - INFO - error - Orchestrator - {'action': 'workflow_failed', 'error': "'SequentialAgentOrchestrator' object has no attribute '_run_agent'"}
+2025-11-29 14:13:32,897 - SmartTaskManager - INFO - agent_call - Orchestrator - {'action': 'workflow_start', 'input': 'Show me my productivity report', 'primary_agent': 'analysis_agent'}
+2025-11-29 14:13:32,898 - SmartTaskManager - INFO - error - Orchestrator - {'action': 'workflow_failed', 'error': "'SequentialAgentOrchestrator' object has no attribute '_run_agent'"}
+2025-11-29 14:32:48,831 - SmartTaskManager - INFO - agent_call - Orchestrator - {'action': 'workflow_start', 'input': 'What are my high priority tasks and goals?', 'primary_agent': 'goal_planning_agent'}
+2025-11-29 14:32:48,837 - SmartTaskManager - INFO - error - goal_planning_agent - {'action': 'execution_failed', 'error': 'Session not found: 2c96f9cc-c6c7-4996-9dee-610b8fd140cd'}
+2025-11-29 14:32:48,837 - SmartTaskManager - INFO - agent_call - Orchestrator - {'action': 'workflow_complete', 'duration_ms': 5.401000000000001, 'agents_involved': ['goal_planning_agent', 'none']}
+2025-11-29 14:32:55,791 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'add_task', 'task_id': 4, 'title': 'Complete project documentation', 'priority': 'high'}
+2025-11-29 14:33:00,374 - SmartTaskManager - INFO - agent_call - Orchestrator - {'action': 'workflow_start', 'input': 'Show me my productivity report', 'primary_agent': 'analysis_agent'}
+2025-11-29 14:33:00,382 - SmartTaskManager - INFO - error - analysis_agent - {'action': 'execution_failed', 'error': 'Session not found: 0c35354e-6a13-453d-a1cb-d130becd67a9'}
+2025-11-29 14:33:00,391 - SmartTaskManager - INFO - error - analysis_agent - {'action': 'execution_failed', 'error': 'Session not found: 00dfd7e5-7170-4970-b7fb-5b3f43522406'}
+2025-11-29 14:33:00,391 - SmartTaskManager - INFO - agent_call - Orchestrator - {'action': 'workflow_complete', 'duration_ms': 16.997999999999998, 'agents_involved': ['analysis_agent', 'analysis_agent']}
+2025-11-29 16:00:49,256 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:00:49,267 - SmartTaskManager - INFO - tool_execution - GoalManager - {'action': 'list_long_term_goals', 'count': 0}
+2025-11-29 16:01:03,911 - SmartTaskManager - INFO - error - WebAPI - {'action': 'chat_endpoint_error', 'error': 'hybrid_chat_once() takes 1 positional argument but 2 were given', 'user_input': 'hi'}
+2025-11-29 16:01:03,911 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:01:03,926 - SmartTaskManager - INFO - tool_execution - GoalManager - {'action': 'list_long_term_goals', 'count': 0}
+2025-11-29 16:01:12,717 - SmartTaskManager - INFO - error - WebAPI - {'action': 'chat_endpoint_error', 'error': 'hybrid_chat_once() takes 1 positional argument but 2 were given', 'user_input': 'break down my project into subtasks'}
+2025-11-29 16:01:12,723 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:01:12,750 - SmartTaskManager - INFO - tool_execution - GoalManager - {'action': 'list_long_term_goals', 'count': 0}
+2025-11-29 16:01:15,962 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_high_priority_top_n', 'count': 2}
+2025-11-29 16:01:15,974 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:01:15,976 - SmartTaskManager - INFO - tool_execution - GoalManager - {'action': 'list_long_term_goals', 'count': 0}
+2025-11-29 16:01:18,923 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:01:18,925 - SmartTaskManager - INFO - tool_execution - GoalManager - {'action': 'list_long_term_goals', 'count': 0}
+2025-11-29 16:01:26,832 - SmartTaskManager - INFO - error - WebAPI - {'action': 'chat_endpoint_error', 'error': 'hybrid_chat_once() takes 1 positional argument but 2 were given', 'user_input': 'show system status and agent health'}
+2025-11-29 16:01:26,857 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:01:26,862 - SmartTaskManager - INFO - tool_execution - GoalManager - {'action': 'list_long_term_goals', 'count': 0}
+2025-11-29 16:01:48,929 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:01:48,934 - SmartTaskManager - INFO - tool_execution - GoalManager - {'action': 'list_long_term_goals', 'count': 0}
+2025-11-29 16:02:19,221 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:02:19,221 - SmartTaskManager - INFO - tool_execution - GoalManager - {'action': 'list_long_term_goals', 'count': 0}
+2025-11-29 16:02:49,207 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:02:49,223 - SmartTaskManager - INFO - tool_execution - GoalManager - {'action': 'list_long_term_goals', 'count': 0}
+2025-11-29 16:03:19,212 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:03:19,212 - SmartTaskManager - INFO - tool_execution - GoalManager - {'action': 'list_long_term_goals', 'count': 0}
+2025-11-29 16:03:49,227 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:03:49,230 - SmartTaskManager - INFO - tool_execution - GoalManager - {'action': 'list_long_term_goals', 'count': 0}
+2025-11-29 16:04:18,931 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:04:18,934 - SmartTaskManager - INFO - tool_execution - GoalManager - {'action': 'list_long_term_goals', 'count': 0}
+2025-11-29 16:04:33,520 - SmartTaskManager - INFO - agent_call - Orchestrator - {'action': 'workflow_start', 'input': 'show system status and agent health', 'primary_agent': 'task_manager_agent'}
+2025-11-29 16:04:33,538 - SmartTaskManager - INFO - error - task_manager_agent - {'action': 'execution_failed', 'error': 'Session not found: 41176df2-6f09-4eed-a04e-c2c0263ec300'}
+2025-11-29 16:04:33,538 - SmartTaskManager - INFO - agent_call - Orchestrator - {'action': 'workflow_complete', 'duration_ms': 17.486, 'agents_involved': ['task_manager_agent', 'none']}
+2025-11-29 16:04:33,549 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:04:33,549 - SmartTaskManager - INFO - tool_execution - GoalManager - {'action': 'list_long_term_goals', 'count': 0}
+2025-11-29 16:04:35,689 - SmartTaskManager - INFO - agent_call - Orchestrator - {'action': 'workflow_start', 'input': 'show system status and agent health', 'primary_agent': 'task_manager_agent'}
+2025-11-29 16:04:35,696 - SmartTaskManager - INFO - error - task_manager_agent - {'action': 'execution_failed', 'error': 'Session not found: 02d3c0c9-c6bb-42e6-a1b3-3b45c5a64e51'}
+2025-11-29 16:04:35,696 - SmartTaskManager - INFO - agent_call - Orchestrator - {'action': 'workflow_complete', 'duration_ms': 7.357, 'agents_involved': ['task_manager_agent', 'none']}
+2025-11-29 16:04:35,696 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:04:35,696 - SmartTaskManager - INFO - tool_execution - GoalManager - {'action': 'list_long_term_goals', 'count': 0}
+2025-11-29 16:04:49,218 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:04:49,219 - SmartTaskManager - INFO - tool_execution - GoalManager - {'action': 'list_long_term_goals', 'count': 0}
+2025-11-29 16:05:16,772 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:05:19,221 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:05:19,224 - SmartTaskManager - INFO - tool_execution - GoalManager - {'action': 'list_long_term_goals', 'count': 0}
+2025-11-29 16:05:23,877 - SmartTaskManager - INFO - agent_call - Orchestrator - {'action': 'workflow_start', 'input': 'hi', 'primary_agent': 'task_manager_agent'}
+2025-11-29 16:05:23,879 - SmartTaskManager - INFO - error - task_manager_agent - {'action': 'execution_failed', 'error': 'Session not found: d83fc4c9-b0fd-483d-a3c7-718c24db1caa'}
+2025-11-29 16:05:23,879 - SmartTaskManager - INFO - agent_call - Orchestrator - {'action': 'workflow_complete', 'duration_ms': 2.4859999999999998, 'agents_involved': ['task_manager_agent', 'none']}
+2025-11-29 16:05:23,887 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:05:27,201 - SmartTaskManager - INFO - agent_call - Orchestrator - {'action': 'workflow_start', 'input': 'delete previous month tasks', 'primary_agent': 'task_manager_agent'}
+2025-11-29 16:05:27,202 - SmartTaskManager - INFO - error - task_manager_agent - {'action': 'execution_failed', 'error': 'Session not found: 83132ba3-586a-428e-96a8-9301be283ded'}
+2025-11-29 16:05:27,203 - SmartTaskManager - INFO - agent_call - Orchestrator - {'action': 'workflow_complete', 'duration_ms': 3.105, 'agents_involved': ['task_manager_agent', 'none']}
+2025-11-29 16:05:27,211 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:05:29,083 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_high_priority_top_n', 'count': 2}
+2025-11-29 16:05:29,103 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 4}
+2025-11-29 16:05:36,039 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'delete_task', 'task_id': 1}
+2025-11-29 16:05:36,060 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 3}
+2025-11-29 16:10:53,756 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 3}
+2025-11-29 16:10:59,401 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 3}
+2025-11-29 16:11:03,230 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 3}
+2025-11-29 16:11:10,132 - SmartTaskManager - INFO - tool_execution - TaskManager - {'action': 'list_tasks', 'status_filter': 'all', 'count': 3}
