@@ -115,8 +115,6 @@ The Orchestrator automatically decides:
 
 # 🏗️ Architecture Diagram
 
-```mermaid
-flowchart TD
 
     User[[User Input]] --> ORCH[Orchestrator Agent]
 
