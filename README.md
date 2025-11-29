@@ -136,25 +136,27 @@ The Orchestrator automatically decides:
     AN --> LOG
     ORCH --> LOG
 
+# ⚙️ Features
 
-⚙️ Features
+✔ Multi-Agent System  
+✔ Full A2A Protocol  
+✔ FastAPI Web App  
+✔ CLI Interface  
+✔ Observability (logs + metrics)  
+✔ Task Manager Tools (10+)  
+✔ Goal Management  
+✔ Reporting & Analytics  
+✔ Sequential Orchestration  
+✔ InMemory Sessions  
 
-✔ Multi-Agent System
-✔ Full A2A Protocol
-✔ FastAPI Web App
-✔ CLI Interface
-✔ Observability (logs + metrics)
-✔ Task Manager Tools (10+)
-✔ Goal Management
-✔ Reporting & Analytics
-✔ Sequential Orchestration
-✔ InMemory Sessions
+---
 
-🚀 Installation & Setup
-1️⃣ Clone the Repository
+# 🚀 Installation & Setup
+
+### **1️⃣ Clone the Repository**
+```bash
 git clone https://github.com/yourusername/smart-task-manager-agent.git
 cd smart-task-manager-agent
-
 2️⃣ Install Dependencies
 pip install -r requirements.txt
 
@@ -284,7 +286,7 @@ Error Testing
 add very very long task title that might test the system limits
 update task 999 status done
 delete task 999
-
+---
 📁 Project Structure
 schedule_agent/
 │
@@ -294,7 +296,7 @@ schedule_agent/
 ├── requirements.txt
 ├── .env.example
 └── __init__.py
-
+---
 🧩 ADK Compatibility Notes
 
 This project uses:
@@ -316,7 +318,7 @@ Compatible with:
 ✔ Vertex Agent Engine
 ✔ Cloud Run
 ✔ MCP + future extensions
-
+---
 🏆 Competition Checklist
 
 This project includes:
@@ -331,4 +333,4 @@ This project includes:
 ✔ CLI
 ✔ Full Documentation
 
-Meets ALL Capstone scoring requirements.
+Meets ALL Capstone scoring
