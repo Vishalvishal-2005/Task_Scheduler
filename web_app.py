@@ -60,7 +60,7 @@ class GoalCreateRequest(BaseModel):
 # API Routes
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat_endpoint(req: ChatRequest):
-    """Chat with the SmartTask system using simple commands"""
+    """Handle chat requests with the SmartTask system."""
     try:
         if not req.message.strip():
             return ChatResponse(reply="Please enter a message.", success=False)
@@ -80,7 +80,7 @@ async def chat_endpoint(req: ChatRequest):
 
 @app.get("/api/tasks")
 async def get_tasks_endpoint(status: Optional[str] = "all"):
-    """Get all tasks"""
+    """Get all tasks based on the specified status."""
     try:
         result = list_tasks(status)
         if result["status"] == "success":
@@ -92,7 +92,7 @@ async def get_tasks_endpoint(status: Optional[str] = "all"):
 
 @app.post("/api/tasks", response_model=ChatResponse)
 async def create_task_endpoint(req: TaskCreateRequest):
-    """Create a new task"""
+    """Create a new task."""
     try:
         result = add_task(req.title, req.due_date, req.priority)
         if result["status"] == "success":
@@ -145,7 +145,7 @@ async def get_goals_endpoint():
 
 @app.post("/api/goals", response_model=ChatResponse)
 async def create_goal_endpoint(req: GoalCreateRequest):
-    """Create a new long-term goal"""
+    """Create a new long-term goal."""
     try:
         result = save_long_term_goal(req.goal, req.horizon_months)
         if result["status"] == "success":
@@ -157,7 +157,14 @@ async def create_goal_endpoint(req: GoalCreateRequest):
 
 @app.get("/api/metrics")
 async def get_metrics_endpoint():
-    """Get system metrics"""
+    """Get system metrics.
+    
+    This endpoint retrieves various system metrics related to events tracked by the
+    application. It counts the total number of events, the number of agent calls,
+    tool executions, and errors. The function handles exceptions gracefully,
+    returning  an error message if any issues occur during the metric retrieval
+    process.
+    """
     try:
         events = tracker.events
         agent_calls = len([e for e in events if e.event_type.value == "agent_call"])
@@ -176,7 +183,22 @@ async def get_metrics_endpoint():
 
 @app.get("/api/quick-actions/{action}")
 async def quick_actions_endpoint(action: str):
-    """Execute quick actions using direct function calls"""
+    """Execute quick actions using direct function calls.
+    
+    This endpoint processes various quick actions based on the provided `action`
+    parameter. It handles three specific actions: retrieving high-priority tasks,
+    cleaning up tasks from the previous month, and generating a productivity
+    report. Each action involves calling corresponding functions and formatting the
+    results into a user-friendly response. If an unknown action is provided or an
+    error occurs, an appropriate message is returned.
+    
+    Args:
+        action (str): The action to be executed, which can be "high-priority", "clean-old", or
+            "productivity-report".
+    
+    Returns:
+        ChatResponse: A response object containing the result of the action or an error message.
+    """
     try:
         if action == "high-priority":
             result = list_high_priority_top_n(5)
@@ -224,7 +246,7 @@ async def quick_actions_endpoint(action: str):
 
 @app.get("/health")
 async def health_check():
-    """Health check endpoint"""
+    """Health check endpoint."""
     return {
         "status": "healthy", 
         "service": "SmartTask Manager API",
@@ -234,7 +256,7 @@ async def health_check():
 # Serve the main web interface
 @app.get("/", response_class=HTMLResponse)
 async def index():
-    """Serve the web interface"""
+    """Serve the main web interface."""
     html_content = """
     <!DOCTYPE html>
     <html>
